@@ -657,19 +657,10 @@ export default function ParentPortal({ onGoToAdmin }: ParentPortalProps) {
                   </div>
                 </div>
 
-                <div className="bg-emerald-50/70 border border-emerald-200 rounded-xl p-4 text-xs sm:text-sm text-slate-700 leading-relaxed">
-                  <p className="font-bold text-emerald-950 mb-1 flex items-center gap-1.5">
-                    <AlertCircle className="w-4 h-4 text-emerald-700" />
-                    Maklumat Rayuan &amp; Senarai Menunggu:
+                <div className="bg-slate-100 border border-slate-200 rounded-xl p-4 text-xs sm:text-sm text-slate-700 leading-relaxed text-center">
+                  <p className="font-semibold text-slate-700">
+                    Pihak pengurusan sekolah merakamkan setinggi-tinggi penghargaan dan terima kasih kepada ibu bapa atas kesudian memohon ke SRA Datuk Haji Mohamad Mortadza Haji Daud.
                   </p>
-                  <p className="text-slate-700">
-                    Pihak pengurusan sekolah merakamkan setinggi-tinggi penghargaan dan terima kasih kepada ibu bapa atas kesudian memilih sekolah kami. 
-                    Ibu bapa yang berhasrat mengemukakan surat rayuan boleh menghantar surat rayuan rasmi ke pejabat sekolah dalam tempoh <strong>14 hari bekerja</strong> bermula dari tarikh pengumuman keputusan ini.
-                  </p>
-                  <div className="mt-3 pt-2.5 border-t border-emerald-200/70 flex flex-wrap gap-4 text-xs text-slate-600">
-                    <span><strong>Pejabat Pentadbiran:</strong> 03-8925 XXXX</span>
-                    <span><strong>Waktu Kaunter:</strong> 8.00 pagi - 4.30 petang (Isnin - Jumaat)</span>
-                  </div>
                 </div>
               </div>
             )}
@@ -681,26 +672,26 @@ export default function ParentPortal({ onGoToAdmin }: ParentPortalProps) {
 
       {/* ================= FOOTER ================= */}
       <footer className="bg-slate-900 text-slate-400 py-6 text-center text-xs border-t border-slate-800 mt-auto">
-        <div className="max-w-4xl mx-auto px-4 space-y-1">
+        <div className="max-w-4xl mx-auto px-4 space-y-2">
           <p className="font-bold text-slate-300">SEKOLAH RENDAH AGAMA DATUK HAJI MOHAMAD MORTADZA HAJI DAUD</p>
-          <p>Hak Cipta Terpelihara &copy; 2026/2027. Jawatankuasa Kemasukan &amp; Pengambilan Murid Tahun 1.</p>
-          <p className="text-slate-500">
+          
+          {/* Hak cipta penuh biasa dan simbol © sebagai laluan rahsia pentadbir */}
+          <div className="flex items-center justify-center gap-1.5 text-slate-400">
+            <span>Hak Cipta Terpelihara</span>
+            <button
+              type="button"
+              onClick={onGoToAdmin}
+              title="Portal Pentadbir"
+              className="text-slate-400 hover:text-white transition cursor-pointer font-bold inline-block px-1 py-0.5 rounded hover:bg-slate-800"
+            >
+              &copy;
+            </button>
+            <span>2026/2027. Jawatankuasa Kemasukan &amp; Pengambilan Murid Tahun 1.</span>
+          </div>
+
+          <p className="text-slate-500 text-[11px]">
             Sebarang pertanyaan sila hubungi pihak pentadbiran sekolah di talian pejabat atau emel rasmi sekolah.
           </p>
-          
-          {/* Akses pentadbir rahsia di bahagian paling bawah */}
-          {onGoToAdmin && (
-            <div className="pt-3">
-              <button
-                type="button"
-                onClick={onGoToAdmin}
-                className="text-slate-600 hover:text-slate-400 text-[10px] tracking-wider transition cursor-pointer font-mono"
-                title="Akses Pentadbir"
-              >
-                LMP
-              </button>
-            </div>
-          )}
         </div>
       </footer>
 
