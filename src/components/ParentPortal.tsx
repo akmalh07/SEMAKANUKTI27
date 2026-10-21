@@ -119,19 +119,19 @@ export default function ParentPortal({ onGoToAdmin }: ParentPortalProps) {
         <img 
           src="https://i.postimg.cc/rmLpBk5P/Untitled-design-(10).png" 
           alt="" 
-          className="w-[420px] sm:w-[580px] md:w-[680px] max-w-none opacity-[0.04] sm:opacity-[0.05] select-none object-contain pointer-events-none"
+          className="w-[380px] sm:w-[500px] md:w-[600px] max-w-none opacity-[0.03] sm:opacity-[0.035] select-none object-contain pointer-events-none"
           referrerPolicy="no-referrer"
         />
       </div>
 
       {/* ================= HEADER KORPORAT RASMI SEKOLAH ================= */}
-      <header className="bg-emerald-950 text-white shadow-md border-b-2 border-emerald-800/80 relative z-20">
+      <header className="bg-emerald-950 text-white shadow-md border-b border-amber-400/40 relative z-20">
         <div className="max-w-5xl mx-auto px-4 py-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-4 text-center sm:text-left">
+          <div className="flex items-center gap-5 sm:gap-6 text-center sm:text-left">
             <img 
               src="https://i.postimg.cc/rmLpBk5P/Untitled-design-(10).png" 
               alt="Logo SRA Datuk Haji Mohamad Mortadza" 
-              className="w-14 h-14 sm:w-16 sm:h-16 object-contain shrink-0 drop-shadow-md"
+              className="w-12 h-12 sm:w-14 sm:h-14 object-contain shrink-0 drop-shadow-sm"
               referrerPolicy="no-referrer"
             />
             <div>
@@ -148,7 +148,7 @@ export default function ParentPortal({ onGoToAdmin }: ParentPortalProps) {
           </div>
           
           <div className="hidden md:block text-right">
-            <span className="text-xs px-3.5 py-1.5 bg-emerald-900/80 border border-emerald-700/60 rounded-full text-emerald-200 font-mono tracking-wider font-semibold">
+            <span className="text-[11px] px-3.5 py-1 bg-emerald-900/40 border border-emerald-600/30 rounded-full text-emerald-200/90 font-mono tracking-wider font-medium">
               SESI KEMASUKAN 2027
             </span>
           </div>
@@ -638,7 +638,7 @@ export default function ParentPortal({ onGoToAdmin }: ParentPortalProps) {
                     KEPUTUSAN: TIDAK BERJAYA
                   </h3>
                   <p className="text-sm text-slate-600 mt-2 max-w-lg mx-auto leading-relaxed">
-                    Dukacita dimaklumkan bahawa permohonan kemasukan bagi calon ini tidak berjaya bagi sesi Tahun 1 / 2027 atas faktor kekosongan kuota tempat yang amat terhad.
+                    Harap Maaf, Dukacita dimaklumkan bahawa permohonan kemasukan bagi calon ini ke SRA Datuk Haji Mohamad Mortadza Haji Daud bagi sesi Tahun 1/ 2027 adalah tidak berjaya.
                   </p>
                 </div>
 
