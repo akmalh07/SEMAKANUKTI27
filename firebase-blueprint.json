@@ -1,0 +1,52 @@
+{
+  "entities": {
+    "Calon": {
+      "title": "Calon",
+      "description": "Maklumat calon ujian kemasukan Tahun 1 2027",
+      "type": "object",
+      "properties": {
+        "cleanMykid": {
+          "type": "string",
+          "description": "12 digit nombor MyKid tanpa tanda sempang",
+          "pattern": "^[0-9]{12}$"
+        },
+        "mykid": {
+          "type": "string",
+          "description": "Nombor MyKid dengan format sempang",
+          "maxLength": 14
+        },
+        "nama": {
+          "type": "string",
+          "description": "Nama penuh murid",
+          "maxLength": 150
+        },
+        "prasekolah": {
+          "type": "string",
+          "description": "Nama tadika atau prasekolah asal",
+          "maxLength": 150
+        },
+        "status": {
+          "type": "string",
+          "description": "Status permohonan kemasukan",
+          "enum": ["BERJAYA", "TIDAK BERJAYA"]
+        },
+        "catatan": {
+          "type": "string",
+          "description": "Catatan tambahan atau kelas penempatan",
+          "maxLength": 500
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Tarikh kemas kini rekod"
+        }
+      },
+      "required": ["cleanMykid", "nama", "status"]
+    }
+  },
+  "firestore": {
+    "/calon_2027/{cleanMykid}": {
+      "schema": "Calon",
+      "description": "Koleksi rekod keputusan ujian kemasukan Tahun 1 Sesi 2027"
+    }
+  }
+}

@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Semakan Keputusan Ujian Kemasukan Tahun 1 2027 - SRA Datuk Haji Mohamad Mortadza Haji Daud</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Amiri -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .font-arabic {
+      font-family: 'Amiri', serif;
+    }
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #printable-letter, #printable-letter * {
+        visibility: visible;
+      }
+      #printable-letter {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+        padding: 20px;
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+  </style>
+<body class="bg-white text-slate-800 min-h-screen flex flex-col antialiased selection:bg-emerald-600 selection:text-white relative">
+
+  <!-- ==================== FADED WATERMARK BACKGROUND ==================== -->
+  <div class="fixed inset-0 pointer-events-none flex items-center justify-center overflow-hidden z-0" aria-hidden="true">
+    <img 
+      src="https://i.postimg.cc/rmLpBk5P/Untitled-design-(10).png" 
+      alt="" 
+      class="w-[420px] sm:w-[580px] md:w-[680px] max-w-none opacity-[0.05] sm:opacity-[0.06] select-none object-contain pointer-events-none" 
+    />
+  </div>
+
+  <!-- ==================== TOP NAVIGATION / HEADER ==================== -->
+  <header class="bg-gradient-to-r from-emerald-950 via-emerald-900 to-teal-950 text-white shadow-md border-b-4 border-amber-500 relative z-20">
+    <div class="max-w-5xl mx-auto px-4 py-5 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3.5 text-center sm:text-left">
+        <img 
+          src="https://i.postimg.cc/rmLpBk5P/Untitled-design-(10).png" 
+          alt="Logo SRA Datuk Haji Mohamad Mortadza" 
+          class="w-16 h-16 sm:w-18 sm:h-18 object-contain shrink-0 drop-shadow-md"
+          referrerPolicy="no-referrer"
+        />
+        <div>
+          <span class="text-[11px] font-bold text-emerald-300 tracking-wider uppercase block">Portal Rasmi Semakan</span>
+          <h1 class="text-base sm:text-lg font-bold tracking-tight text-white leading-snug">
+            SEKOLAH RENDAH AGAMA DATUK HAJI MOHAMAD MORTADZA HAJI DAUD
+          </h1>
+          <p class="text-xs text-emerald-100/80 mt-0.5">Sesi Kemasukan Tahun 1 / 2027</p>
+        </div>
+      </div>
+      
+      <div class="hidden md:block text-right">
+        <span class="text-xs px-3.5 py-1.5 bg-white/10 border border-emerald-300/30 rounded-full text-emerald-200 font-mono tracking-wider font-semibold">
+          SESI KEMASUKAN 2027
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN CONTENT CONTAINER ==================== -->
+  <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-8 sm:py-12">
+    
+    <!-- Hero / Title Card -->
+    <div class="text-center mb-8">
+      <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 mb-2 border border-emerald-200">
+        Ujian Penilaian Kemasukan (UPKK / Diagnostik)
+      </span>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+        Semakan Keputusan Ujian Kemasukan Tahun 1 (2027)
+      </h2>
+      <p class="text-sm sm:text-base text-slate-600 mt-2 max-w-2xl mx-auto">
+        Sila masukkan 12 digit Nombor MyKid calon tanpa tanda sempang (-) untuk membuat semakan status permohonan dan mencetak surat tawaran.
+      </p>
+    </div>
+
+    <!-- Carian / Search Card -->
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden mb-8 transition-all duration-300">
+      <div class="bg-gradient-to-r from-emerald-800 to-teal-800 px-6 py-3.5 flex items-center justify-between text-white">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+          <span class="text-sm font-semibold tracking-wide">Borang Semakan Calon</span>
+        </div>
+        <span class="text-xs text-emerald-200">Kemasukan 2027</span>
+      </div>
+
+      <form id="search-form" class="p-6 sm:p-8" onsubmit="handleSemakan(event)">
+        <label for="mykid-input" class="block text-sm font-medium text-slate-700 mb-2">
+          Nombor MyKid Calon <span class="text-red-500">*</span>
+        </label>
+        
+        <div class="flex flex-col sm:flex-row gap-3">
+          <div class="relative flex-grow">
+            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"/>
+              </svg>
+            </div>
+            <input
+              type="text"
+              id="mykid-input"
+              maxlength="14"
+              placeholder="Contoh: 200101141234 atau 200101-14-1234"
+              class="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 font-mono text-base focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 transition"
+              required
+              autocomplete="off"
+            />
+          </div>
+
+          <button
+            type="submit"
+            id="submit-btn"
+            class="px-6 py-3 bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 text-white font-semibold rounded-xl shadow-sm hover:shadow transition duration-200 flex items-center justify-center gap-2 whitespace-nowrap cursor-pointer"
+          >
+            <!-- Search Icon -->
+            <svg id="btn-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+            <!-- Loading Spinner (Hidden by default) -->
+            <svg id="btn-spinner" class="w-5 h-5 animate-spin hidden text-white" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <span id="btn-text">Semak Keputusan</span>
+          </button>
+        </div>
+
+        <p class="text-xs text-slate-500 mt-2.5 flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+          </svg>
+          Sila pastikan nombor MyKid adalah kepunyaan calon yang telah menduduki sesi ujian penilaian.
+        </p>
+      </form>
+    </div>
+
+    <!-- ==================== PAPARAN KEPUTUSAN (RESULT DISPLAY) ==================== -->
+    <div id="result-container" class="transition-all duration-300"></div>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs border-t border-slate-800 mt-auto">
+    <div class="max-w-4xl mx-auto px-4 space-y-1">
+      <p class="font-medium text-slate-300">SEKOLAH RENDAH AGAMA DATUK HAJI MOHAMAD MORTADZA HAJI DAUD</p>
+      <p>Hak Cipta Terpelihara &copy; 2026/2027. Pengurusan Hal Ehwal Murid &amp; Kemasukan.</p>
+      <p class="text-slate-500">Sebarang pertanyaan sila hubungi pihak pentadbiran sekolah di talian pejabat atau emel rasmi sekolah.</p>
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    /**
+     * URL Web App Google Apps Script
+     * Sila gantikan nilai di bawah dengan URL Web App anda selepas 'Deploy as Web App'
+     */
+    const WEB_APP_URL = "SILA_MASUKKAN_URL_WEB_APP_ANDA_DI_SINI";
+
+    /**
+     * Fungsi utama untuk mengendalikan proses semakan keputusan
+     */
+    async function handleSemakan(event) {
+      event.preventDefault();
+      
+      const inputEl = document.getElementById("mykid-input");
+      const submitBtn = document.getElementById("submit-btn");
+      const btnText = document.getElementById("btn-text");
+      const btnIcon = document.getElementById("btn-icon");
+      const btnSpinner = document.getElementById("btn-spinner");
+      const resultContainer = document.getElementById("result-container");
+
+      const rawMykid = inputEl.value.trim();
+      const cleanMykid = rawMykid.replace(/[^0-9]/g, "");
+
+      if (!cleanMykid || cleanMykid.length < 12) {
+        alert("Sila masukkan 12 digit Nombor MyKid yang sah.");
+        inputEl.focus();
+        return;
+      }
+
+      // Aktifkan keadaan loading pada butang
+      submitBtn.disabled = true;
+      submitBtn.classList.add("opacity-80", "cursor-not-allowed");
+      btnText.textContent = "Menyemak...";
+      btnIcon.classList.add("hidden");
+      btnSpinner.classList.remove("hidden");
+      resultContainer.innerHTML = "";
+
+      try {
+        let resultData = null;
+
+        // Semak sekiranya URL masih placeholder, berikan simulasi pintar atau ralat
+        if (WEB_APP_URL === "SILA_MASUKKAN_URL_WEB_APP_ANDA_DI_SINI" || !WEB_APP_URL) {
+          console.warn("WEB_APP_URL belum dikonfigurasi. Menggunakan data simulasi untuk ujian pratonton.");
+          
+          // Simulasi kelewatan rangkaian (network delay 700ms)
+          await new Promise(resolve => setTimeout(resolve, 700));
+
+          // Logik simulasi untuk menguji semua senario sekiranya URL belum diletakkan
+          if (cleanMykid.endsWith("1") || cleanMykid.endsWith("3") || cleanMykid.endsWith("5") || cleanMykid.includes("1234")) {
+            resultData = {
+              status: "BERJAYA",
+              nama: "AHMAD DANIAL BIN MOHD HAFIZ",
+              mykid: formatMyKid(cleanMykid),
+              prasekolah: "TADIKA ISLAM PASTI AL-FALAH"
+            };
+          } else if (cleanMykid.endsWith("2") || cleanMykid.endsWith("4") || cleanMykid.includes("5678")) {
+            resultData = {
+              status: "TIDAK BERJAYA",
+              nama: "NUR AISYAH HUMAIRA BINTI ZULKIFLI",
+              mykid: formatMyKid(cleanMykid),
+              prasekolah: "PRA-SEKOLAH SK BANDAR BARU"
+            };
+          } else {
+            resultData = {
+              status: "NOT_FOUND"
+            };
+          }
+        } else {
+          // Melakukan panggilan fetch sebenar ke Google Apps Script Web App
+          const endpoint = `${WEB_APP_URL}?mykid=${encodeURIComponent(cleanMykid)}`;
+          const response = await fetch(endpoint, {
+            method: "GET",
+            headers: {
+              "Accept": "application/json"
+            }
+          });
+
+          if (!response.ok) {
+            throw new Error(`Ralat pelayan: ${response.status}`);
+          }
+
+          resultData = await response.json();
+        }
+
+        // Paparkan keputusan berdasarkan status yang diterima
+        renderResult(resultData, cleanMykid);
+
+      } catch (error) {
+        console.error("Ralat semasa menyemak:", error);
+        resultContainer.innerHTML = `
+          <div class="bg-amber-50 border border-amber-300 rounded-2xl p-6 text-amber-900 shadow-sm">
+            <div class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-amber-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+              </svg>
+              <div>
+                <h3 class="font-bold text-base text-amber-900">Ralat Rangkaian / Sistem</h3>
+                <p class="text-sm mt-1 text-amber-800">
+                  Tidak dapat berhubung dengan pangkalan data Google Apps Script. Sila pastikan sambungan internet anda stabil dan URL Web App telah ditetapkan dengan betul.
+                </p>
+                <p class="text-xs text-amber-700 mt-2 font-mono">Perincian: ${escapeHTML(error.message || error)}</p>
+              </div>
+            </div>
+          </div>
+        `;
+      } finally {
+        // Pulihkan butang semula
+        submitBtn.disabled = false;
+        submitBtn.classList.remove("opacity-80", "cursor-not-allowed");
+        btnText.textContent = "Semak Keputusan";
+        btnIcon.classList.remove("hidden");
+        btnSpinner.classList.add("hidden");
+        
+        // Skrol ke bahagian keputusan dengan lancar
+        resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    /**
+     * Memaparkan keputusan mengikut status: NOT_FOUND, BERJAYA, atau TIDAK BERJAYA
+     */
+    function renderResult(data, searchedMykid) {
+      const container = document.getElementById("result-container");
+      
+      const normalizedStatus = (data.status || "").trim().toUpperCase();
+
+      // ==========================================
+      // KES 1: NOT_FOUND (TIADA DATA)
+      // ==========================================
+      if (normalizedStatus === "NOT_FOUND" || !normalizedStatus) {
+        container.innerHTML = `
+          <div class="bg-red-50 border-2 border-red-400 rounded-2xl p-6 sm:p-8 shadow-sm text-center">
+            <div class="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4 border border-red-200">
+              <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            
+            <h3 class="text-2xl font-black text-red-700 tracking-wide uppercase">
+              TIADA DATA
+            </h3>
+            
+            <p class="text-slate-700 text-base font-medium mt-3 max-w-lg mx-auto">
+              Nombor MyKid <span class="font-mono font-bold text-red-800 bg-red-100/70 px-2 py-0.5 rounded">${formatMyKid(searchedMykid)}</span> tiada dalam rekod permohonan atau ujian kemasukan.
+            </p>
+            
+            <div class="mt-5 text-xs text-slate-500 max-w-md mx-auto bg-white/70 border border-red-200 rounded-xl p-3.5 text-left space-y-1">
+              <p class="font-semibold text-slate-700">Panduan:</p>
+              <ul class="list-disc list-inside space-y-0.5">
+                <li>Sila pastikan 12 digit nombor MyKid dimasukkan dengan tepat.</li>
+                <li>Sekiranya anda yakin telah mendaftar anak anda, sila hubungi pihak pejabat pentadbiran sekolah untuk semakan manual.</li>
+              </ul>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      // ==========================================
+      // KES 2: BERJAYA (TAHNIAH, ANDA BERJAYA!)
+      // ==========================================
+      if (normalizedStatus === "BERJAYA") {
+        const namaMurid = (data.nama || "-").toUpperCase();
+        const noMykid = formatMyKid(data.mykid || searchedMykid);
+        const namaPrasekolah = (data.prasekolah || "-").toUpperCase();
+        const tarikhSemakan = new Date().toLocaleDateString('ms-MY', { day: 'numeric', month: 'long', year: 'numeric' });
+
+        container.innerHTML = `
+          <div class="bg-emerald-50 border-2 border-emerald-500 rounded-2xl p-6 sm:p-8 shadow-sm">
+            
+            <!-- Header Status -->
+            <div class="text-center pb-6 border-b border-emerald-200">
+              <div class="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto mb-3 border border-emerald-300 shadow-sm">
+                <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
+              
+              <h3 class="text-2xl sm:text-3xl font-black text-emerald-800 tracking-tight">
+                TAHNIAH, ANDA BERJAYA!
+              </h3>
+              
+              <p class="text-sm sm:text-base text-emerald-700 font-medium mt-1">
+                Calon telah ditawarkan tempat ke Tahun 1 Sesi Persekolahan 2027 di SRA Datuk Haji Mohamad Mortadza Haji Daud.
+              </p>
+            </div>
+
+            <!-- Maklumat Murid -->
+            <div class="mt-6 bg-white rounded-xl border border-emerald-200 overflow-hidden shadow-xs">
+              <div class="bg-emerald-800/10 px-4 py-2.5 border-b border-emerald-200 flex items-center justify-between">
+                <span class="text-xs font-bold text-emerald-900 tracking-wider uppercase">Maklumat Calon Berjaya</span>
+                <span class="text-xs font-semibold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">STATUS: DITAWARKAN</span>
+              </div>
+              
+              <dl class="divide-y divide-emerald-100 text-sm">
+                <div class="px-5 py-3.5 sm:grid sm:grid-cols-3 sm:gap-4">
+                  <dt class="font-semibold text-slate-600">Nama Penuh Calon</dt>
+                  <dd class="mt-1 sm:mt-0 sm:col-span-2 font-bold text-slate-900 text-base">${escapeHTML(namaMurid)}</dd>
+                </div>
+                
+                <div class="px-5 py-3.5 sm:grid sm:grid-cols-3 sm:gap-4">
+                  <dt class="font-semibold text-slate-600">Nombor MyKid</dt>
+                  <dd class="mt-1 sm:mt-0 sm:col-span-2 font-mono font-bold text-emerald-800 tracking-wider">${escapeHTML(noMykid)}</dd>
+                </div>
+                
+                <div class="px-5 py-3.5 sm:grid sm:grid-cols-3 sm:gap-4">
+                  <dt class="font-semibold text-slate-600">Nama Prasekolah / Tadika</dt>
+                  <dd class="mt-1 sm:mt-0 sm:col-span-2 text-slate-800 font-medium">${escapeHTML(namaPrasekolah)}</dd>
+                </div>
+
+                <div class="px-5 py-3.5 sm:grid sm:grid-cols-3 sm:gap-4">
+                  <dt class="font-semibold text-slate-600">Sesi Persekolahan</dt>
+                  <dd class="mt-1 sm:mt-0 sm:col-span-2 text-slate-800 font-medium">Tahun 1 (Sesi Persekolahan 2027)</dd>
+                </div>
+              </dl>
+            </div>
+
+            <!-- Tindakan & Butang Cetak -->
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-emerald-200">
+              <div class="text-xs text-emerald-800 text-center sm:text-left">
+                <p class="font-semibold">Sila cetak Surat Tawaran rasmi ini untuk urusan pengesahan pendaftaran.</p>
+                <p class="text-emerald-700/80">Tarikh semakan: ${tarikhSemakan}</p>
+              </div>
+
+              <button
+                type="button"
+                onclick="bukaSuratTawaran('${escapeHTML(namaMurid)}', '${escapeHTML(noMykid)}', '${escapeHTML(namaPrasekolah)}')"
+                class="w-full sm:w-auto px-6 py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-semibold rounded-xl shadow transition duration-200 flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <svg class="w-5 h-5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+                </svg>
+                <span>Cetak Surat Tawaran</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- SURAT TAWARAN MODAL / TEMPLAT CETAKAN RASMI -->
+          <div id="modal-surat" class="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto hidden">
+            <div class="bg-white w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden my-8 border border-slate-200">
+              
+              <!-- Modal Top Bar (No print) -->
+              <div class="bg-emerald-900 px-6 py-4 flex items-center justify-between text-white no-print">
+                <span class="font-bold text-sm tracking-wide">Pratonton Surat Tawaran Rasmi</span>
+                <div class="flex items-center gap-2">
+                  <button
+                    onclick="window.print()"
+                    class="px-3.5 py-1.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-lg flex items-center gap-1.5 transition shadow"
+                  >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+                    </svg>
+                    Cetak Sekarang
+                  </button>
+                  <button
+                    onclick="tutupSuratTawaran()"
+                    class="p-1.5 text-emerald-200 hover:text-white rounded-lg hover:bg-white/10 transition"
+                  >
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- SURAT RASMI BODY (PRINTABLE AREA) -->
+              <div id="printable-letter" class="p-8 sm:p-12 text-slate-900 bg-white">
+                
+                <!-- Kepala Surat (Letterhead) -->
+                <div class="border-b-2 border-slate-900 pb-4 mb-6 text-center flex flex-col items-center">
+                  <img 
+                    src="https://i.postimg.cc/rmLpBk5P/Untitled-design-(10).png" 
+                    alt="Logo SRA Datuk Haji Mohamad Mortadza" 
+                    className="w-18 h-18 object-contain mb-2"
+                    referrerPolicy="no-referrer"
+                  />
+                  <h2 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 uppercase">
+                    SEKOLAH RENDAH AGAMA DATUK HAJI MOHAMAD MORTADZA HAJI DAUD
+                  </h2>
+                  <p class="text-xs text-slate-600 mt-1">KOMPLEKS PENDIDIKAN ISLAM, JALAN MASJID, MALAYSIA</p>
+                  <p class="text-xs text-slate-500 font-mono">TEL: 03-8925 XXXX | EMEL: sradhmmhd@gmail.com</p>
+                </div>
+
+                <!-- Rujukan & Tarikh -->
+                <div class="flex justify-between items-start text-xs sm:text-sm mb-6 text-slate-700">
+                  <div>
+                    <p><span class="font-semibold">Ruj. Kami:</span> SRA-DMMHD/T1-2027/TW-${data.mykid || searchedMykid}</p>
+                    <p><span class="font-semibold">Kepada:</span> Ibu Bapa / Penjaga</p>
+                  </div>
+                  <div class="text-right">
+                    <p><span class="font-semibold">Tarikh:</span> ${tarikhSemakan}</p>
+                  </div>
+                </div>
+
+                <!-- Tajuk Surat -->
+                <div class="mb-4">
+                  <h3 class="text-sm sm:text-base font-bold text-slate-900 uppercase border-b border-slate-300 pb-2">
+                    TAWARAN KEMASUKAN KE TAHUN 1 SESI PERSEKOLAHAN 2027
+                  </h3>
+                </div>
+
+                <div class="text-xs sm:text-sm text-slate-700 space-y-3 leading-relaxed">
+                  <p>Tuan/Puan,</p>
+                  <p>Dengan sukacitanya dimaklumkan bahawa calon berikut telah <strong>BERJAYA</strong> dalam Ujian Penilaian Kemasukan dan ditawarkan tempat bagi kemasukan Tahun 1 Sesi Persekolahan 2027:</p>
+                  
+                  <!-- Jadual Calon -->
+                  <div class="bg-slate-50 border border-slate-300 rounded-lg p-4 my-3 text-xs sm:text-sm font-sans">
+                    <div class="grid grid-cols-3 gap-2 py-1 border-b border-slate-200">
+                      <span class="text-slate-500">Nama Calon:</span>
+                      <span class="col-span-2 font-bold text-slate-900">${escapeHTML(namaMurid)}</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 py-1 border-b border-slate-200">
+                      <span class="text-slate-500">No. MyKid:</span>
+                      <span class="col-span-2 font-mono font-bold text-slate-900">${escapeHTML(noMykid)}</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 py-1">
+                      <span class="text-slate-500">Prasekolah Asal:</span>
+                      <span class="col-span-2 font-medium text-slate-900">${escapeHTML(namaPrasekolah)}</span>
+                    </div>
+                  </div>
+
+                  <p class="font-semibold text-slate-900">2. PENGESAHAN PENDAFTARAN & TAKLIMAT IBU BAPA</p>
+                  <p>Pihak tuan/puan dikehendaki hadir bagi sesi taklimat serta mengesahkan penerimaan tawaran ini mengikut butiran berikut:</p>
+                  <ul class="list-disc list-inside space-y-1 ml-2 text-slate-800">
+                    <li><strong>Tarikh:</strong> 15 November 2026 (Sabtu)</li>
+                    <li><strong>Masa:</strong> 8:30 Pagi - 12:00 Tengah Hari</li>
+                    <li><strong>Tempat:</strong> Dewan Utama SRA Datuk Haji Mohamad Mortadza Haji Daud</li>
+                  </ul>
+
+                  <p class="font-semibold text-slate-900 pt-2">3. DOKUMEN YANG PERLU DIBAWA:</p>
+                  <ol class="list-decimal list-inside space-y-1 ml-2 text-slate-800">
+                    <li>Surat Tawaran Rasmi ini (dicetak).</li>
+                    <li>Salinan Sijil Lahir &amp; MyKid murid (disahkan).</li>
+                    <li>Salinan Kad Pengenalan Ibu &amp; Bapa/Penjaga.</li>
+                    <li>Salinan Slip Gaji / Pengesahan Pendapatan.</li>
+                    <li>Buku Rekod Kesihatan &amp; Imunisasi murid.</li>
+                  </ol>
+
+                  <p class="pt-2 text-slate-600 italic text-xs">
+                    *Kegagalan hadir mengesahkan pendaftaran dalam tempoh yang ditetapkan boleh menyebabkan tawaran ini terbatal secara automatik.
+                  </p>
+                </div>
+
+                <!-- Tandatangan Pentadbir -->
+                <div class="mt-8 pt-4 border-t border-slate-200 flex justify-between items-end text-xs sm:text-sm">
+                  <div>
+                    <p class="text-slate-500 mb-8">Sekian, terima kasih.</p>
+                    <p class="font-bold text-slate-900 uppercase">GURU BESAR / JAWATANKUASA KEMASUKAN</p>
+                    <p class="text-slate-600">SRA Datuk Haji Mohamad Mortadza Haji Daud</p>
+                  </div>
+                  <div class="text-right">
+                    <div class="w-24 h-24 border border-dashed border-slate-300 rounded-lg flex items-center justify-center text-[10px] text-slate-400 text-center p-2 uppercase">
+                      Cop Rasmi Sekolah
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      // ==========================================
+      // KES 3: TIDAK BERJAYA
+      // ==========================================
+      if (normalizedStatus === "TIDAK BERJAYA") {
+        const namaMurid = (data.nama || "-").toUpperCase();
+        const noMykid = formatMyKid(data.mykid || searchedMykid);
+
+        container.innerHTML = `
+          <div class="bg-slate-50 border border-slate-300 rounded-2xl p-6 sm:p-8 shadow-sm">
+            <div class="w-14 h-14 bg-slate-200 text-slate-600 rounded-full flex items-center justify-center mx-auto mb-3">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+
+            <div class="text-center pb-5 border-b border-slate-200">
+              <h3 class="text-xl sm:text-2xl font-bold text-slate-800 tracking-tight">
+                KEPUTUSAN: TIDAK BERJAYA
+              </h3>
+              <p class="text-sm text-slate-600 mt-1 max-w-lg mx-auto">
+                Dukacita dimaklumkan bahawa permohonan kemasukan bagi calon ini tidak berjaya bagi sesi Tahun 1 / 2027 atas faktor kekosongan tempat yang terhad.
+              </p>
+            </div>
+
+            <!-- Ringkasan Calon -->
+            <div class="my-5 bg-white border border-slate-200 rounded-xl p-4 text-xs sm:text-sm space-y-1.5 max-w-lg mx-auto">
+              <div class="flex justify-between">
+                <span class="text-slate-500 font-medium">Nama Calon:</span>
+                <span class="font-bold text-slate-900">${escapeHTML(namaMurid)}</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-500 font-medium">Nombor MyKid:</span>
+                <span class="font-mono font-bold text-slate-800">${escapeHTML(noMykid)}</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-500 font-medium">Status:</span>
+                <span class="font-semibold text-slate-600">TIDAK DITAWARKAN</span>
+              </div>
+            </div>
+
+            <!-- Mesej Sopan & Maklumat Rayuan -->
+            <div class="bg-emerald-50/70 border border-emerald-200 rounded-xl p-4 text-xs sm:text-sm text-slate-700 leading-relaxed">
+              <p class="font-semibold text-emerald-950 mb-1 flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-700" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                </svg>
+                Maklumat Rayuan &amp; Senarai Menunggu:
+              </p>
+              <p class="text-slate-700">
+                Pihak sekolah merakamkan setinggi-tinggi penghargaan dan terima kasih atas kesudian ibu bapa memilih sekolah kami. 
+                Ibu bapa yang ingin mengemukakan surat rayuan boleh menghantar permohonan rayuan rasmi ke pejabat sekolah dalam tempoh <strong>14 hari bekerja</strong> dari tarikh pengumuman keputusan ini.
+              </p>
+              <div class="mt-3 pt-2 border-t border-emerald-200/80 flex flex-wrap gap-4 text-xs text-slate-600">
+                <span><strong>No. Tel Pejabat:</strong> 03-XXXX XXXX</span>
+                <span><strong>Waktu Operasi:</strong> Isnin - Jumaat (8.00 pagi - 4.30 petang)</span>
+              </div>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      // KES LAIN: STATUS TIDAK DIKENALI
+      container.innerHTML = `
+        <div class="bg-slate-100 border border-slate-300 rounded-2xl p-6 text-center text-slate-700">
+          <p class="font-bold">Status: ${escapeHTML(normalizedStatus)}</p>
+          <p class="text-xs text-slate-500 mt-1">Sila hubungi pihak pentadbiran sekolah untuk maklumat lanjut.</p>
+        </div>
+      `;
+    }
+
+    /**
+     * Buka modal surat tawaran
+     */
+    function bukaSuratTawaran(nama, mykid, prasekolah) {
+      const modal = document.getElementById("modal-surat");
+      if (modal) {
+        modal.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      }
+    }
+
+    /**
+     * Tutup modal surat tawaran
+     */
+    function tutupSuratTawaran() {
+      const modal = document.getElementById("modal-surat");
+      if (modal) {
+        modal.classList.add("hidden");
+        document.body.style.overflow = "auto";
+      }
+    }
+
+    /**
+     * Format MyKid kepada format 123456-78-9012
+     */
+    function formatMyKid(value) {
+      const cleaned = (value || "").toString().replace(/[^0-9]/g, "");
+      if (cleaned.length === 12) {
+        return `${cleaned.slice(0, 6)}-${cleaned.slice(6, 8)}-${cleaned.slice(8, 12)}`;
+      }
+      return value || "-";
+    }
+
+    /**
+     * Escape HTML untuk keselamatan XSS
+     */
+    function escapeHTML(str) {
+      if (!str) return "";
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    // Auto-format MyKid semasa pengguna menaip
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.getElementById("mykid-input");
+      if (input) {
+        input.addEventListener("input", (e) => {
+          let val = e.target.value.replace(/[^0-9]/g, "");
+          if (val.length > 12) val = val.slice(0, 12);
+          if (val.length > 8) {
+            e.target.value = `${val.slice(0, 6)}-${val.slice(6, 8)}-${val.slice(8)}`;
+          } else if (val.length > 6) {
+            e.target.value = `${val.slice(0, 6)}-${val.slice(6)}`;
+          } else {
+            e.target.value = val;
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

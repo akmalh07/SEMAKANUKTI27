@@ -1,0 +1,6 @@
+{
+  "name": "Portal Semakan Tahun 1 2027 - SRA Datuk Haji Mohamad Mortadza",
+  "description": "Portal rasmi semakan keputusan ujian kemasukan Tahun 1 Sesi 2027 Sekolah Rendah Agama Datuk Haji Mohamad Mortadza Haji Daud.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
