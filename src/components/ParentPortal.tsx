@@ -328,15 +328,73 @@ export default function ParentPortal({ onGoToAdmin }: ParentPortalProps) {
                 <div className="bg-white border-2 border-slate-300 rounded-2xl p-6 sm:p-8 shadow-sm">
                   
                   <div className="pb-4 border-b border-slate-200">
-                    <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full uppercase tracking-wider border border-emerald-200">
-                      Tindakan Ibu Bapa / Penjaga Wajib
-                    </span>
-                    <h4 className="text-lg sm:text-xl font-bold text-slate-900 mt-2">
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <span className="text-[11px] font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-full uppercase tracking-wider border border-emerald-200">
+                        Tindakan Ibu Bapa / Penjaga Wajib
+                      </span>
+                      <span className="text-[11px] font-bold text-red-800 bg-red-50 px-2.5 py-1 rounded-full uppercase tracking-wider border border-red-200 flex items-center gap-1">
+                        <Clock className="w-3.5 h-3.5 text-red-600" />
+                        Tutup: 23 Okt 2026 (12:00 Tgh Hari)
+                      </span>
+                    </div>
+
+                    <h4 className="text-lg sm:text-xl font-bold text-slate-900">
                       Pengesahan Penerimaan Tawaran Kemasukan Tahun 1 (2027)
                     </h4>
+                    
                     <p className="text-xs sm:text-sm text-slate-600 mt-1">
                       Sila buat pengesahan sama ada tuan/puan bersetuju <strong>Menerima</strong> atau <strong>Menolak</strong> tawaran kemasukan ini untuk direkodkan dalam sistem pentadbiran sekolah.
                     </p>
+
+                    {/* Susunan Kemas & Jelas: Hari, Tarikh, Jam */}
+                    <div className="mt-4 p-4 sm:p-5 bg-gradient-to-br from-amber-50 via-red-50/40 to-amber-50/70 border-2 border-amber-300 rounded-2xl shadow-xs">
+                      <div className="flex items-center gap-2 text-red-900 font-black text-sm uppercase tracking-wide">
+                        <AlertCircle className="w-5 h-5 text-red-600 shrink-0" />
+                        <span>Peringatan Penting: Pengesahan Menerima / Menolak Tawaran</span>
+                      </div>
+
+                      <p className="text-xs sm:text-sm text-slate-700 mt-1.5 leading-relaxed">
+                        Tuan/Puan <strong>wajib membuat pengesahan</strong> sama ada <strong>Menerima</strong> atau <strong>Menolak</strong> tawaran ini sebelum tarikh dan masa tutup berikut:
+                      </p>
+
+                      {/* Kotak Susunan Hari, Tarikh & Jam */}
+                      <div className="mt-3.5 grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                        {/* HARI */}
+                        <div className="bg-white border border-amber-200 rounded-xl p-3 text-center shadow-2xs">
+                          <span className="text-[10px] font-bold tracking-wider text-slate-500 uppercase block">
+                            Hari
+                          </span>
+                          <span className="text-base sm:text-lg font-black text-slate-900 block mt-0.5">
+                            Jumaat
+                          </span>
+                        </div>
+
+                        {/* TARIKH */}
+                        <div className="bg-white border border-amber-200 rounded-xl p-3 text-center shadow-2xs">
+                          <span className="text-[10px] font-bold tracking-wider text-slate-500 uppercase block">
+                            Tarikh Tutup
+                          </span>
+                          <span className="text-base sm:text-lg font-black text-emerald-900 block mt-0.5">
+                            23 Oktober 2026
+                          </span>
+                        </div>
+
+                        {/* JAM / MASA */}
+                        <div className="bg-white border border-red-200 rounded-xl p-3 text-center shadow-2xs">
+                          <span className="text-[10px] font-bold tracking-wider text-red-600 uppercase block font-semibold">
+                            Masa Akhir
+                          </span>
+                          <span className="text-base sm:text-lg font-black text-red-700 block mt-0.5">
+                            Sebelum 12.00 Tgh Hari
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="mt-3 flex items-center gap-1.5 text-[11px] text-amber-950 font-medium bg-amber-100/70 px-3 py-1.5 rounded-lg border border-amber-200">
+                        <Clock className="w-3.5 h-3.5 text-amber-800 shrink-0" />
+                        <span>Tawaran yang tidak disahkan selepas waktu ini akan dianggap menolak dan dibuka kepada senarai menunggu.</span>
+                      </div>
+                    </div>
                   </div>
 
                   {submitFeedback && (
@@ -527,7 +585,7 @@ export default function ParentPortal({ onGoToAdmin }: ParentPortalProps) {
                       {/* Butang Hantar */}
                       <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-slate-100">
                         <p className="text-xs text-slate-500 text-center sm:text-left">
-                          Keputusan anda akan terus dikemas kini dalam sistem pentadbiran sekolah secara langsung.
+                          <strong className="text-red-700">Peringatan:</strong> Sila hantar sebelum <strong>12.00 tgh hari, 23 Okt 2026</strong>. Tindakan anda terus dikemas kini dalam sistem pentadbir.
                         </p>
 
                         <div className="flex items-center gap-2 w-full sm:w-auto">
