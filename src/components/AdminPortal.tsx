@@ -399,6 +399,111 @@ export default function AdminPortal({ onGoToParentPortal, onLogout }: AdminPorta
     URL.revokeObjectURL(url);
   };
 
+  // Cetak Senarai Calon Berjaya (Format PDF Cantik Rasmi menggunakan window.print)
+  const handlePrintBerjayaPdf = () => {
+    const berjayaList = calonList.filter(c => c.status === 'BERJAYA');
+    if (!berjayaList.length) {
+      alert('Tiada senarai calon yang berstatus BERJAYA untuk dicetak.');
+      return;
+    }
+
+    const printWindow = window.open('', '_blank');
+    if (!printWindow) {
+      alert('Sila benarkan pop-up pada pelayar web anda untuk mencetak.');
+      return;
+    }
+
+    const htmlContent = `
+      <!DOCTYPE html>
+      <html lang="ms">
+      <head>
+        <meta charset="UTF-8">
+        <title>Senarai Rasmi Calon Berjaya Tahun 1 2027 - SRA Datuk Haji Mohamad Mortadza Haji Daud</title>
+        <style>
+          @page { size: A4 portrait; margin: 15mm; }
+          body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #1e293b; margin: 0; padding: 20px; font-size: 12pt; }
+          .header { text-align: center; border-bottom: 3px double #065f46; padding-bottom: 15px; margin-bottom: 20px; }
+          .logo { width: 60px; height: 60px; object-fit: contain; margin-bottom: 8px; }
+          h1 { font-size: 16pt; font-weight: 800; color: #065f46; margin: 0 0 5px 0; text-transform: uppercase; }
+          h2 { font-size: 12pt; font-weight: 700; color: #1e293b; margin: 0 0 5px 0; }
+          p { font-size: 10pt; color: #64748b; margin: 0; }
+          .meta-info { display: flex; justify-content: space-between; font-size: 10pt; margin-bottom: 15px; font-weight: 600; color: #334155; }
+          table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+          th, td { border: 1px solid #cbd5e1; padding: 8px 10px; text-align: left; font-size: 10pt; }
+          th { background-color: #065f46; color: #ffffff; font-weight: 700; text-transform: uppercase; font-size: 9pt; }
+          tr:nth-child(even) { background-color: #f8fafc; }
+          .text-center { text-align: center; }
+          .badge-terima { color: #065f46; font-weight: 700; }
+          .badge-tolak { color: #dc2626; font-weight: 700; }
+          .badge-belum { color: #d97706; font-weight: 600; }
+          .footer { margin-top: 30px; text-align: center; font-size: 9pt; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 10px; }
+          @media print {
+            .no-print { display: none; }
+          }
+        </style>
+      </head>
+      <body>
+        <div class="header">
+          <img src="https://i.postimg.cc/rmLpBk5P/Untitled-design-(10).png" alt="Logo Sekolah" class="logo">
+          <h1>SEKOLAH RENDAH AGAMA DATUK HAJI MOHAMAD MORTADZA HAJI DAUD</h1>
+          <h2>SENARAI RASMI CALON BERJAYA KEMASUKAN TAHUN 1 (SESI 2027)</h2>
+          <p>Tarikh Cetakan: ${new Date().toLocaleDateString('ms-MY', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+        </div>
+
+        <div class="meta-info">
+          <span>Jumlah Keseluruhan Calon Berjaya: <strong>${berjayaList.length} Orang</strong></span>
+          <span>Status: Dokumen Rasmi Pentadbiran Sekolah</span>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 40px;" class="text-center">Bil</th>
+              <th style="width: 140px;">No. MyKid</th>
+              <th>Nama Penuh Calon</th>
+              <th>Tadika / Prasekolah Asal</th>
+              <th style="width: 130px;" class="text-center">Pengesahan Tawaran</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${berjayaList.map((c, idx) => {
+              let statusRespon = '<span class="badge-belum">Belum Respon</span>';
+              if (c.jawapanTawaran === 'TERIMA') {
+                statusRespon = '<span class="badge-terima">Menerima Tawaran</span>';
+              } else if (c.jawapanTawaran === 'TOLAK') {
+                statusRespon = '<span class="badge-tolak">Menolak Tawaran</span>';
+              }
+
+              return `
+                <tr>
+                  <td class="text-center">${idx + 1}</td>
+                  <td style="font-family: monospace; font-weight: bold;">${c.mykid || formatMyKid(c.cleanMykid)}</td>
+                  <td style="font-weight: bold; text-transform: uppercase;">${c.nama}</td>
+                  <td style="text-transform: uppercase;">${c.prasekolah || '-'}</td>
+                  <td class="text-center">${statusRespon}</td>
+                </tr>
+              `;
+            }).join('')}
+          </tbody>
+        </table>
+
+        <div class="footer">
+          <p>Dokumen ini penjanaan komputer daripada Portal Rasmi Semakan &amp; Pengambilan SRA Datuk Haji Mohamad Mortadza Haji Daud. Tandatangan tidak diperlukan.</p>
+        </div>
+
+        <script>
+          window.onload = function() {
+            window.print();
+          }
+        </script>
+      </body>
+      </html>
+    `;
+
+    printWindow.document.write(htmlContent);
+    printWindow.document.close();
+  };
+
   // Statistik Utama
   const totalBerjaya = calonList.filter(c => c.status === 'BERJAYA').length;
   const totalTidakBerjaya = calonList.filter(c => c.status === 'TIDAK BERJAYA').length;
@@ -613,6 +718,16 @@ export default function AdminPortal({ onGoToParentPortal, onLogout }: AdminPorta
           </div>
 
           <div className="flex items-center gap-2 pb-2">
+            <button
+              type="button"
+              onClick={handlePrintBerjayaPdf}
+              className="px-3 py-1.5 bg-emerald-900 hover:bg-emerald-800 text-white text-xs font-bold rounded-lg flex items-center gap-1.5 transition shadow-xs cursor-pointer"
+              title="Cetak senarai rasmi calon berjaya dalam format PDF cetakan rasmi"
+            >
+              <FileSpreadsheet className="w-3.5 h-3.5 text-amber-400" />
+              <span>Cetak Senarai Berjaya (PDF)</span>
+            </button>
+
             <button
               type="button"
               onClick={handleExportCsv}
