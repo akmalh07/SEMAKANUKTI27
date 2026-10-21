@@ -24,13 +24,19 @@ service cloud.firestore {
 
     // Koleksi calon_2027
     match /calon_2027/{cleanMykid} {
-      // Ibu bapa dibenarkan membuat 'get' (carian 1 rekod mengikut MyKid)
+      // Ibu bapa boleh mencari rekod 1 calon mengikut No MyKid
       allow get: if isValidId(cleanMykid);
 
-      // Pentadbir boleh membaca senarai penuh (list) dan menguruskan rekod (create, update, delete)
+      // Pentadbir boleh membaca senarai penuh (list)
       allow list: if true;
+
+      // Cipta rekod (mematuhi skema sah)
       allow create: if isValidId(cleanMykid) && isValidCalon(request.resource.data);
-      allow update: if isValidId(cleanMykid) && isValidCalon(request.resource.data);
+
+      // Kemas kini rekod (sama ada kemaskini pentadbir atau pengesahan jawapan oleh ibu bapa)
+      allow update: if isValidId(cleanMykid);
+
+      // Padam rekod
       allow delete: if isValidId(cleanMykid);
     }
   }

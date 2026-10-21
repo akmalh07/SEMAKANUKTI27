@@ -2,37 +2,9 @@ import React, { useState, useEffect } from 'react';
 import ParentPortal from './components/ParentPortal';
 import AdminPortal from './components/AdminPortal';
 import { testFirebaseConnection } from './lib/firebase';
-import { getAllCalon, saveBulkCalon } from './lib/calonService';
 import { Lock, Eye, EyeOff, X, ShieldAlert, KeyRound } from 'lucide-react';
 
 const ADMIN_PASSWORD = 'akmalUKTIdua7';
-
-const SEED_DATA = [
-  {
-    cleanMykid: '200101141234',
-    mykid: '200101-14-1234',
-    nama: 'AHMAD DANIAL BIN MOHD HAFIZ',
-    prasekolah: 'TADIKA ISLAM PASTI AL-FALAH',
-    status: 'BERJAYA' as const,
-    catatan: 'Tahniah! Calon mendapat markah cemerlang dalam Ujian Penilaian Hafazan & Asas Fardhu Ain.'
-  },
-  {
-    cleanMykid: '200202105678',
-    mykid: '200202-10-5678',
-    nama: 'NUR AISYAH HUMAIRA BINTI ZULKIFLI',
-    prasekolah: 'PRA-SEKOLAH SK BANDAR BARU',
-    status: 'BERJAYA' as const,
-    catatan: 'Tahniah! Calon berjaya ditempatkan di Kelas 1 Al-Ghazali.'
-  },
-  {
-    cleanMykid: '200303089999',
-    mykid: '200303-08-9999',
-    nama: 'MUHAMMAD ADAM HARITH BIN KHAIRUL ANUAR',
-    prasekolah: 'TADIKA KEMAS SERI MAWAR',
-    status: 'TIDAK BERJAYA' as const,
-    catatan: 'Permohonan tidak berjaya kerana kekosongan kuota kemasukan telah penuh.'
-  }
-];
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
@@ -60,26 +32,10 @@ export default function App() {
         if (sessionStorage.getItem('sra_admin_auth') === 'true') {
           setIsAdminView(true);
         } else {
-          // Buka modal pengesahan kata laluan
           setIsPasswordModalOpen(true);
         }
       }
     }
-
-    // Pastikan pangkalan data mempunyai data permulaan sekiranya kosong
-    async function seedInitialDataIfNeeded() {
-      try {
-        const existing = await getAllCalon();
-        if (existing.length === 0) {
-          console.log('Pangkalan data kosong. Memasukkan data permulaan...');
-          await saveBulkCalon(SEED_DATA);
-        }
-      } catch (e) {
-        console.warn('Gagal menyemak data permulaan:', e);
-      }
-    }
-
-    seedInitialDataIfNeeded();
   }, []);
 
   // Apabila pengguna menekan butang 'LMP'

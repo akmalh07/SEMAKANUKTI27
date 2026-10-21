@@ -2,7 +2,7 @@
   "entities": {
     "Calon": {
       "title": "Calon",
-      "description": "Maklumat calon ujian kemasukan Tahun 1 2027",
+      "description": "Maklumat calon ujian kemasukan Tahun 1 2027 serta status pengesahan penerimaan tawaran",
       "type": "object",
       "properties": {
         "cleanMykid": {
@@ -27,8 +27,22 @@
         },
         "status": {
           "type": "string",
-          "description": "Status permohonan kemasukan",
+          "description": "Status kelayakan kemasukan",
           "enum": ["BERJAYA", "TIDAK BERJAYA"]
+        },
+        "jawapanTawaran": {
+          "type": "string",
+          "description": "Pengesahan penerimaan tawaran oleh ibu bapa",
+          "enum": ["TERIMA", "TOLAK"]
+        },
+        "tarikhJawapan": {
+          "type": "string",
+          "description": "Tarikh dan masa pengesahan dihantar oleh ibu bapa"
+        },
+        "sebabTolak": {
+          "type": "string",
+          "description": "Sebab penolakan tawaran oleh ibu bapa jika menolak",
+          "maxLength": 300
         },
         "catatan": {
           "type": "string",
@@ -46,7 +60,7 @@
   "firestore": {
     "/calon_2027/{cleanMykid}": {
       "schema": "Calon",
-      "description": "Koleksi rekod keputusan ujian kemasukan Tahun 1 Sesi 2027"
+      "description": "Koleksi rekod keputusan ujian kemasukan Tahun 1 Sesi 2027 dan pengesahan jawapan tawaran"
     }
   }
 }
